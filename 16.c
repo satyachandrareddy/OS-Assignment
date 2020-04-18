@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 
 int main()
 {
@@ -9,18 +10,29 @@ int main()
 
 	
 	//No. of processes 
-	printf("Enter Number of Processes to be calculated: \t");
+	printf("Enter Number of Processes to be calculated: ");
 	scanf("%d", &num);
 	a = num;
+	printf("\n");
 	
 	//Details of each processes
-	for(i = 0; i <= a-1; i++)
+	if(a == 0)
 	{
-		printf("\nEnter details of the process - %d:\n", i+1);
-		printf("Enter the Burst Time of the process - %d\t", i+1);
-		scanf("%d", &burst[i]);
-		printf("Enter the Arrival Time of the process - %d\t", i+1);
+		printf("Invalid");
+		exit(1);
+	}
+	
+	for(i = 0; i<a; i++)
+	{
+		printf("Enter arrival time of the Process P%d: ",i+1);
 		scanf("%d", &arrival[i]);
+	}
+	printf("\n");
+	
+	for(i = 0; i<a; i++)
+	{
+		printf("Enter burst time of the Process P%d: ",i+1);
+		scanf("%d", &burst[i]);
 		temp[i] = burst[i];
 	}
 	

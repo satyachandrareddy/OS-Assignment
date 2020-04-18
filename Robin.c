@@ -5,6 +5,8 @@ int main()
 	//initializations
 	int num, i, a, time_quantum, total = 0, counter = 0, wait_time = 0, turnaround_time = 0;
 	int arrival[50], burst[50], temp[50];
+	float average_wait_time, average_turnaround_time;
+
 	
 	//No. of processes 
 	printf("Enter Number of Processes to be calculated: \t");
@@ -64,4 +66,12 @@ int main()
 				i = 0;
 			}
       } 
+      
+      //Calcultion of averages
+      average_wait_time = wait_time * 1.0 / num;
+      average_turnaround_time = turnaround_time * 1.0 / num;
+      printf("\n\nTotal Waiting Time:\t%d", wait_time); 
+      printf("\n\nAverage Waiting Time:\t%f", average_wait_time); 
+      printf("\nAvg Turnaround Time:\t%f\n", average_turnaround_time); 
+      return 0; 
 }

@@ -3,8 +3,8 @@
 int main()
 {
 	//initializations
-	int num, i, a, time_quantum;
-	int arrival[50], burst[50];
+	int num, i, a, time_quantum, total = 0, counter = 0, wait_time = 0, turnaround_time = 0;
+	int arrival[50], burst[50], temp[50];
 	
 	//No. of processes 
 	printf("Enter Number of Processes to be calculated: \t");
@@ -19,6 +19,7 @@ int main()
 		scanf("%d", &burst[i]);
 		printf("Enter the Arrival Time of the process - %d\t", i+1);
 		scanf("%d", &arrival[i]);
+		temp[i] = burst[i];
 	}
 	
 	//Time Quantum
@@ -29,7 +30,7 @@ int main()
 	printf("\nProcess ID\t\tBurst Time\t Turnaround Time\t Waiting Time\n");
 	
 	//Main Problem
-	for(total = 0, i = 0; x != 0;) 
+	for(total = 0, i = 0; a != 0;) 
       { 
             if(temp[i] <= time_quantum && temp[i] > 0) 
             { 
@@ -42,4 +43,25 @@ int main()
                   temp[i] = temp[i] - time_quantum; 
                   total = total + time_quantum; 
             }
+            if(temp[i] == 0 && counter == 1) 
+            { 
+                  a--; 
+                  printf("\nProcess[%d]\t\t%d\t\t %d\t\t\t %d", i + 1, burst[i], total - arrival[i], total - arrival[i] - burst[i]);
+                  wait_time = wait_time + total - arrival[i] - burst[i]; 
+                  turnaround_time = turnaround_time + total - arrival[i]; 
+                  counter = 0; 
+            } 
+            if(i == num-1)
+            {
+            	i = 0;
+			}
+       		else if(arrival[i+1] <= total)
+       		{
+       			i++;
+			}
+			else
+			{
+				i = 0;
+			}
+      } 
 }
